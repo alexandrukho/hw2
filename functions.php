@@ -1,4 +1,7 @@
 <?php
+$strTask1 = ["string1", "string2", "string3"];
+$numbers = [5, 2];
+
 function task1($arrStr, $bool = false)
 {
     foreach ($arrStr as $words) {
@@ -14,21 +17,22 @@ function task1($arrStr, $bool = false)
 function task2($arrOfNumbers, $sign)
 {
     $sum = $arrOfNumbers[0];
-    if ($sign == '+') {
-        for ($number = 1; $number < count($arrOfNumbers); $number++) {
-            $sum += $arrOfNumbers[$number];
+    $counter = 1;
+    if ($sign === '+') {
+        for ($counter; $counter < count($arrOfNumbers); $counter++) {
+            $sum += $arrOfNumbers[$counter];
         }
-    } elseif ($sign == '-') {
-        for ($number = 1; $number < count($arrOfNumbers); $number++) {
-            $sum -= $arrOfNumbers[$number];
+    } elseif ($sign === '-') {
+        for ($counter; $counter < count($arrOfNumbers); $counter++) {
+            $sum -= $arrOfNumbers[$counter];
         }
-    } elseif ($sign == '*') {
-        for ($number = 1; $number < count($arrOfNumbers); $number++) {
-            $sum *= $arrOfNumbers[$number];
+    } elseif ($sign === '*') {
+        for ($counter; $counter < count($arrOfNumbers); $counter++) {
+            $sum *= $arrOfNumbers[$counter];
         }
-    } elseif ($sign == '/') {
-        for ($number = 1; $number < count($arrOfNumbers); $number++) {
-            $sum /= $arrOfNumbers[$number];
+    } elseif ($sign === '/') {
+        for ($counter; $counter < count($arrOfNumbers); $counter++) {
+            $sum /= $arrOfNumbers[$counter];
         }
     } else {
         return "Error";
@@ -120,12 +124,13 @@ function task8($checkNetwork)
 {
     $patternPackets = '/packets:\d{4,}/';
     $patternSmile = '/:\)/';
+
     if (preg_match($patternSmile, $checkNetwork)) {
         function drawSmile()
         {
             echo "<pre>";
 //            TODO - понять почему вместе с смайликом выводится в конце единица.
-            echo print_r("
+            echo("
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 ░░░▄▄▀▀▀▀▀▀█▄░░░░░░░░░░▄▀▀▀▀▀▀▀▄▄░░
 ░░█▀░░░░░░▄▄░▀▄░░░░░░▄▀░░░░░░░░░▀█░
@@ -147,7 +152,6 @@ function task8($checkNetwork)
 ░░░▀▀▀▀▀▀▀░░░░░░░░░░░░░░░░░░░░░░░░░");
             echo "</pre>";
         }
-
         return drawSmile();
     } elseif (preg_match($patternPackets, $checkNetwork)) {
         return "Сеть есть";
